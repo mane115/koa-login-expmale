@@ -1,6 +1,5 @@
 var koa = require('koa'),
-	app = koa(),
-	router = require('koa-router')();
+	app = koa();
 var initDB = function() {
 	require('./dataBase');
 }

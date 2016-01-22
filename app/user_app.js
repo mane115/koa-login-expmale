@@ -50,16 +50,18 @@ var changePassword = function*() {
     }
 }
 var unLogin = function*() {
+    var client = tool.resClient(this)
     console.log('this.session remove:', this.session)
     this.session = null
     console.log('this.session is remove?', this.session)
+    yield client.success('unLogin success')
 }
 
 module.exports = {
-    apply: apply,
-    login: login,
-    changePassword: changePassword,
-    unLogin: unLogin
+    apply,
+    login,
+    changePassword,
+    unLogin
 }
 
 function* checkAccountExist(data, usage) {

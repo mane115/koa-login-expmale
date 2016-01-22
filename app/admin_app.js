@@ -19,7 +19,7 @@ var test3 = function*() {
 	console.log('test 3 end') //5
 }
 module.exports = {
-	test: test,
-	test2: test2,
-	test3: test3
+	test,
+	test2,
+	test3,
 }

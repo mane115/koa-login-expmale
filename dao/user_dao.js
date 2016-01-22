@@ -41,7 +41,7 @@ var changePassword = function(userInfo) {
 	return generalUpdate(condition, update, option)
 }
 module.exports = {
-	findAccount: findAccount,
-	createAccount: createAccount,
-	changePassword: changePassword
+	findAccount,
+	createAccount,
+	changePassword
 }
