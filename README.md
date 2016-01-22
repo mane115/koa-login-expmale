@@ -1,15 +1,14 @@
 #koa-login
 ================================
-	this is a sinple example by use koa,and the midware is koa-router,koa-session-mongo,koa-bodyparser<br />
-  这是一个简单的simple，使用了koa-router,koa-session-mongo,koa-bodyparser等中间件实现登录功能<br />
-  prot:3000<br />
-  端口:3000<br />
-  方法|路由路径|描述
-  ————- | ————-
-  post|/user/apply|申请账号
-  post|/user/login|登录
-  post|/user/changepw|更改密码
-  get|/user/unlogin|登出
+this is a sinple example by use koa,and the midware is koa-router,koa-session-mongo,koa-bodyparser<br />
+这是一个简单的simple，使用了koa-router,koa-session-mongo,koa-bodyparser等中间件实现登录功能<br />
+##prot:3000<br />
+##端口:3000<br />
+##方法 | 路由路径 | 描述
+  post | /user/apply | 申请账号<br />
+  post | /user/login | 登录<br />
+  post | /user/changepw | 更改密码<br />
+  get | /user/unlogin | 登出<br />
   other router is for test<br />
   其他的都是测试用路径<br />
   at last,although i complete it,i just a rookie ,if you have some new method ,fix the project plz!<br />
