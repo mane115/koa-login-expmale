@@ -1,0 +1,25 @@
+{
+  "name": "koa-login-example",
+  "version": "1.0.0",
+  "description": "this is a fundation example,the author is a vagetBrid:cai niao",
+  "main": "app.js",
+  "dependencies": {
+    "co-body": "^4.0.0",
+    "koa": "^1.1.2",
+    "koa-bodyparser": "^2.0.1",
+    "koa-router": "^5.3.0",
+    "koa-session-mongo": "^1.1.0",
+    "koa-session-store": "^1.1.1",
+    "mongoose": "^4.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "login"
+  ],
+  "author": "GuoHao Gho",
+  "license": "ISC"
+}
