@@ -23,10 +23,16 @@ var initMidWare = function() {
 		}));
 	}
 	var initStaticFile = function() {
-		var staticCache = require('koa-static-cache')
-		app.use(staticCache(__dirname + ctx.publicDir, {
-			maxAge: 24 * 60 * 60
-		}))
+		// var staticCache = require('koa-static-cache')
+		// app.use(staticCache(__dirname + ctx.publicDir, {
+		// 	maxAge: 24 * 60 * 60
+		// }))
+		var serve = require('koa-static'),
+			dir = __dirname + ctx.publicDir,
+			options = {
+				maxage: 10 * 60 * 60000
+			};
+		app.use(serve(dir, options))
 	}
 	initStaticFile();
 	initSession();
