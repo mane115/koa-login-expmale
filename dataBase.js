@@ -7,12 +7,8 @@ var initMongoose = function() {
 		console.error(err)
 		var auto = require('./autoBat')
 		var batUrl = ctx.dbBatUrl;
-		var cwdUrl = batUrl.substring(0, 3)
-		try {
-			auto.runBat(batUrl, cwdUrl)
-		} catch (err) {
-			console.error(err)
-		}
+		var cwdUrl = batUrl.substring(0, 3);
+		auto.runBat(batUrl, cwdUrl).then(() => console.log('bat运行成功')).catch(err => console.log(err))
 	})
 }
 var loadModel = function() {
