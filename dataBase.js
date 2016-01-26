@@ -1,14 +1,23 @@
 var mongoose = require('mongoose');
 var ctx = require('./config.json');
+var runBat = function() {
+	var auto = require('./autoBat')
+	var batUrl = ctx.dbBatUrl;
+	var cwdUrl = batUrl.substring(0, 3);
+	auto.runBat(batUrl, cwdUrl)
+		.then(msg => console.log(msg))
+		.catch(err => console.log(err))
+}
 var initMongoose = function() {
 	mongoose.connect(`mongodb://${ctx.dbIP}/${ctx.dbName}`);
 	mongoose.connection.on('error', function(err) {
 		console.log('数据库可能没连接')
 		console.error(err)
-		var auto = require('./autoBat')
-		var batUrl = ctx.dbBatUrl;
-		var cwdUrl = batUrl.substring(0, 3);
-		auto.runBat(batUrl, cwdUrl).then(() => console.log('bat运行成功')).catch(err => console.log(err))
+		if (ctx.dbIP === 'localhost') {
+			runBat()
+		} else {
+			console.log('mongodb数据库可能非本地，请联系服务器管理员');
+		}
 	})
 }
 var loadModel = function() {
