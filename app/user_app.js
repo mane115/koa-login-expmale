@@ -23,9 +23,7 @@ var login = function*() {
         var data = yield dao.findAccount(loginInfo);
         yield checkAccountExist(data, 'login');
         yield compairPassword(data[0].password, loginInfo.password);
-        console.log('set session ...')
         this.session.accountName = loginInfo.accountName
-        console.log('set session success:', this.session.accountName)
         yield client.success('login success')
     } catch (err) {
         console.log(err)
@@ -53,7 +51,6 @@ var unLogin = function*() {
     var client = tool.resClient(this)
     console.log('this.session remove:', this.session)
     this.session = null
-    console.log('this.session is remove?', this.session)
     yield client.success('unLogin success')
 }
 var upload = function*() {

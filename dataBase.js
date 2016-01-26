@@ -16,7 +16,7 @@ var initMongoose = function() {
 		if (ctx.dbIP === 'localhost') {
 			runBat()
 		} else {
-			console.log('mongodb数据库可能非本地，请联系服务器管理员');
+			console.log('mongodb数据库可能无配置bat文件或非本地，请联系服务器管理员');
 		}
 	})
 }
