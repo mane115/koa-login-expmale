@@ -4,5 +4,6 @@
 	"dbName": "koa_borrow",
 	"keys": ["Gho is so handsome"],
 	"publicDir": "/public",
+	"dbBatUrl":"C:/Users/dell/Desktop/mongodb.bat",
 	"localIp": "172.16.1.117" 
 }
