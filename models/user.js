@@ -4,7 +4,8 @@ var createSchema = function() {
 	var user = {
 		accountName: String,
 		password: String,
-		userName: String
+		userName: String,
+		avatar: String
 	};
 	schema = new mongoose.Schema(user);
 }

@@ -1,6 +1,7 @@
-var dao = require('../dataBase.js');
-var Admin = dao.getModel('Admin');
-
+var dao = require('../dataBase.js'),
+	Admin = dao.getModel('Admin'),
+	User = dao.getModel('User'),
+	tool = require('../common.js');
 var createTest = function() {
 	var entity = new Admin({
 		accountName: 'admin',
@@ -21,7 +22,13 @@ var test = function(arg) {
 		success()
 	})
 }
+var findAccount = function() {
+	return new Promise((success, fail) => {
+		User.find().exec(tool.findCallback(success, fail))
+	})
+}
 module.exports = {
 	createTest,
-	test
+	test,
+	findAccount
 }

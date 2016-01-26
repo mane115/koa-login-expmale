@@ -1,4 +1,6 @@
-var dao = require('../dao/admin_dao.js')
+var dao = require('../dao/admin_dao.js'),
+	tool = require('../common.js');
+
 var test = function*(next) {
 	console.log('before dao') //1
 	var val = yield dao.createTest() //2 return val
@@ -18,8 +20,18 @@ var test3 = function*() {
 	this.body = 'hello'; //4
 	console.log('test 3 end') //5
 }
+var findAccount = function*() {
+	var client = tool.resClient(this)
+	console.log('admin find')
+	var data = yield dao.findAccount();
+	var path = data[0].avatar;
+	console.log(path);
+	// var newPath = tool.getPhoto(path)
+	yield client.success(data)
+}
 module.exports = {
 	test,
 	test2,
 	test3,
+	findAccount
 }

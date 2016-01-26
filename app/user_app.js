@@ -42,7 +42,7 @@ var changePassword = function*() {
         yield checkAccountExist(data, 'login');
         yield compairPassword(data[0].password, userInfo.password);
         yield dao.changePassword(userInfo);
-        //distory session
+        //distory session if needed
         yield client.success('update success')
     } catch (err) {
         console.log(err)
@@ -56,14 +56,36 @@ var unLogin = function*() {
     console.log('this.session is remove?', this.session)
     yield client.success('unLogin success')
 }
-
+var upload = function*() {
+    var client = tool.resClient(this);
+    //尝试在app中操作generalMethod
+    try {
+        console.log('user upload')
+        var update = {
+                avatar: null
+            },
+            condition = {
+                accountName: this.session.accountName
+            },
+            option = {
+                new: true
+            };
+        update.avatar = yield tool.uploadImg(this);
+        var cbData = yield dao.generalUpdate(condition, update, option);
+        yield client.success(cbData)
+    } catch (err) {
+        client.fail(err)
+    }
+};
+///////////////////////////////////////////////////
 module.exports = {
     apply,
     login,
     changePassword,
-    unLogin
-}
-
+    unLogin,
+    upload
+};
+///////////////////////////////////////////////////
 function* checkAccountExist(data, usage) {
     console.log('find success,checkData:', data)
     if (data.length !== 0 && usage === 'apply') {

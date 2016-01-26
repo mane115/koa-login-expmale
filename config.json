@@ -1,0 +1,8 @@
+{
+	"port": 3000,
+	"dbIP": "localhost",
+	"dbName": "koa_borrow",
+	"keys": ["Gho is so handsome"],
+	"publicDir": "/public",
+	"localIp": "172.16.1.117" 
+}

@@ -1,5 +1,6 @@
 var koa = require('koa'),
-	app = koa();
+	app = koa(),
+	ctx = require('./config.json');
 var initDB = function() {
 	require('./dataBase');
 }
@@ -12,7 +13,7 @@ var initMidWare = function() {
 		var session = require('koa-session-store'),
 			mongoStore = require('koa-session-mongo'),
 			mongoose = require('./dataBase');
-		app.keys = ['Gho is so handsome'];
+		app.keys = ctx.keys;
 		var store = mongoStore.create({
 			mongoose: mongoose.connection,
 			expirationTime: 36000
@@ -21,6 +22,13 @@ var initMidWare = function() {
 			store: store
 		}));
 	}
+	var initStaticFile = function() {
+		var staticCache = require('koa-static-cache')
+		app.use(staticCache(__dirname + ctx.publicDir, {
+			maxAge: 24 * 60 * 60
+		}))
+	}
+	initStaticFile();
 	initSession();
 	initBodyParser();
 };
@@ -33,9 +41,13 @@ var initRouter = function() {
 var initSystem = function() {
 	initDB();
 	initMidWare();
-	initRouter()
-	app.listen(3000, function() {
-		console.log('koa in 3000')
+	initRouter();
+	app.listen(ctx.port, function() {
+		console.log(`koa in ${ctx.port}`)
 	})
 }
-initSystem()
+try {
+	initSystem()
+} catch (err) {
+	console.log(err)
+}

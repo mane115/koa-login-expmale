@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var ctx = require('./config.json');
 var initMongoose = function() {
-	mongoose.connect('mongodb://localhost/koa_borrow');
+	mongoose.connect(`mongodb://${ctx.dbIP}/${ctx.dbName}`);
 	mongoose.connection.on('error', function(err) {
 		console.log(err)
 	})

@@ -43,5 +43,7 @@ var changePassword = function(userInfo) {
 module.exports = {
 	findAccount,
 	createAccount,
-	changePassword
+	changePassword,
+	generalUpdate,
+	generalFind
 }
