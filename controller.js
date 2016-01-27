@@ -1,5 +1,6 @@
 var router = require('koa-router')();
 var admin = require('./app/admin_app.js'),
+	http = require('http'),
 	user = require('./app/user_app.js'),
 	tool = require('./common');
 console.log('controller init start')

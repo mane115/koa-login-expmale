@@ -1,4 +1,5 @@
 var formidable = require('formidable'),
+	fs = require('fs'),
 	ctx = require('./config.json');
 var commonCallback = function(type) {
 	var callback = function(success, fail) {
@@ -77,6 +78,44 @@ var getPhoto = function(path) {
 	var newPath = path.substring(ctx.publicDir.length)
 	return newPath
 }
+var getIPv4 = function() {
+	console.log('正在获取ip地址');
+	var os = require('os'),
+		ip = null,
+		IPMsg = os.networkInterfaces();
+	IPMsg.WLAN.forEach(msg => {
+		if (msg.family === 'IPv4') {
+			ip = msg.address
+		}
+	})
+	return Promise.resolve(ip)
+}
+var compairIPv4 = function(newIP) {
+	if (ctx.localIp !== newIP) {
+		console.log(`compairing IP:${ctx.localIp} and ${newIP}`)
+		var update = {
+			localIp: newIP
+		}
+		return updateConfig(ctx, update)
+	} else {
+		return Promise.resolve('IPv4 not change')
+	}
+}
+var updateConfig = function(ctx, update) {
+	for (attr in update) {
+		ctx[attr] = update[attr]
+	}
+	var newContent = JSON.stringify(ctx);
+	console.log('即将更新config.json,更新的内容为：', newContent)
+	fs.writeFileSync('./config.json', newContent);
+	return '文件更新成功'
+}
+var checkIPv4 = function() {
+	getIPv4()
+		.then(compairIPv4)
+		.then(msg => console.log(msg))
+		.catch(err => console.log(err))
+}
 module.exports = {
 	findCallback: commonCallback('find'),
 	saveCallback: commonCallback('save'),
@@ -84,5 +123,6 @@ module.exports = {
 	resClient,
 	validate,
 	uploadImg,
-	getPhoto
+	getPhoto,
+	checkIPv4
 }

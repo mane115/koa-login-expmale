@@ -1,5 +1,6 @@
 var koa = require('koa'),
 	app = koa(),
+	tool = require('./common'),
 	ctx = require('./config.json');
 var initDB = function() {
 	require('./dataBase');
@@ -34,18 +35,20 @@ var initMidWare = function() {
 	initSession();
 	initBodyParser();
 };
+
 var initRouter = function() {
 	var router = require('./controller.js')
 	app.use(router.routes())
 		.use(router.allowedMethods());
 }
+
 var initSystem = function() {
 	initDB();
 	initMidWare();
 	initRouter();
-	app.listen(ctx.port, function() {
-		console.log(`koa in ${ctx.port}`)
-	})
+	tool.checkIPv4();
+	app.listen(ctx.port);
+	console.log(`koa in ${ctx.port}`)
 }
 try {
 	initSystem()
