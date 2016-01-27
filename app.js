@@ -36,8 +36,7 @@ var initMidWare = function() {
 };
 var initRouter = function() {
 	var router = require('./controller.js')
-	app
-		.use(router.routes())
+	app.use(router.routes())
 		.use(router.allowedMethods());
 }
 var initSystem = function() {

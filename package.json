@@ -4,6 +4,7 @@
   "description": "a small demo build by gho",
   "main": "app.js",
   "dependencies": {
+    "co-fs": ">=1.2.0",
     "co-body": "^4.0.0",
     "formidable": "^1.0.17",
     "koa-bodyparser": "^2.0.1",
