@@ -1,9 +1,13 @@
 var formidable = require('formidable'),
 	fs = require('fs'),
+	http = require('http'),
+	gbk = require('gbk'),
 	ctx = require('./config.json');
+
 var commonCallback = function(type) {
 	var callback = function(success, fail) {
 		var handleFun = function(e, data) {
+			console.log('callback')
 			if (e) {
 				var errorMsg = {
 					type: `${type} error`,
@@ -29,7 +33,7 @@ var resClient = function(ctx) {
 	}
 	var fail = function(data) {
 		resMsg.status = 9999;
-		resMsg.msg = data;
+		resMsg.msg = data.toString();
 		ctx.body = resMsg
 		console.log('client fail')
 		return Promise.resolve()
@@ -116,6 +120,29 @@ var checkIPv4 = function() {
 		.then(msg => console.log(msg))
 		.catch(err => console.log(err))
 }
+var httpGet = function(path, bol) {
+	//bol用于指名是否为gbk,默认bol=false.
+	return new Promise((success, fail) => {
+		http.get(path, function(res) {
+			console.log('请求的地址：', path)
+			var data = '';
+			res.on('data', function(chunk) {
+				if (bol) {
+					var utf8 = gbk.toString('utf-8', chunk)
+					data += utf8
+				} else {
+					data += chunk
+				}
+			})
+			res.on('end', function() {
+				success(data)
+			})
+			res.on('error', function(err) {
+				fail(err)
+			})
+		})
+	})
+}
 module.exports = {
 	findCallback: commonCallback('find'),
 	saveCallback: commonCallback('save'),
@@ -124,5 +151,6 @@ module.exports = {
 	validate,
 	uploadImg,
 	getPhoto,
-	checkIPv4
+	checkIPv4,
+	httpGet
 }

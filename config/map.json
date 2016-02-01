@@ -1,0 +1,11 @@
+{
+	"qq": {
+		"regular": "a[class=linkto]",
+		"hrefPath": "http://news.qq.com",
+		"type": {
+			"china": "/china_index",
+			"world": "/world_index",
+			"society": "/society_index"
+		}
+	}
+}

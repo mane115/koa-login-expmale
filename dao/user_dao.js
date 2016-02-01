@@ -47,6 +47,3 @@ module.exports = {
 	generalUpdate,
 	generalFind
 }
-
-
-
