@@ -1,17 +1,20 @@
 {
-  "name": "koa-login-demo",
-  "version": "1.0.0",
-  "description": "a small demo build by gho",
+  "name": "koa-login-example",
+  "version": "1.2.0",
+  "description": "a koa example",
   "main": "app.js",
   "dependencies": {
-    "co-fs": ">=1.2.0",
+    "cheerio": "^0.19.0",
     "co-body": "^4.0.0",
+    "co-fs": "^1.2.0",
     "formidable": "^1.0.17",
-    "koa-bodyparser": "^2.0.1",
+    "gbk": "^0.1.0",
     "koa": "^1.1.2",
+    "koa-bodyparser": "^2.0.1",
     "koa-router": "^5.3.0",
     "koa-session-mongo": "^1.1.0",
     "koa-session-store": "^1.1.1",
+    "koa-static-cache": "^3.1.4",
     "koa-static": "^2.0.0",
     "mongoose": "^4.3.6"
   },
@@ -25,8 +28,9 @@
   },
   "keywords": [
     "koa",
-    "demo",
-    "login"
+    "login",
+    "news",
+    "example"
   ],
   "author": "gho",
   "license": "MIT",
