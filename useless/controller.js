@@ -1,5 +1,4 @@
 var router = require('koa-router')(),
-	tool = require('./common');
 var admin = require('./app/admin_app.js'),
 	user = require('./app/user_app.js'),
 	news = require('./app/news_app.js');

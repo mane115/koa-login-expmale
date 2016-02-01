@@ -1,8 +1,6 @@
-// var ctx = require('./config.json');
 var koa = require('koa'),
 	app = koa(),
 	fs = require('co-fs');
-var tool = require('../common.js')
 var getIPv4 = function() {
 	console.log('正在获取ip地址');
 	var os = require('os'),
@@ -42,7 +40,7 @@ var readConfig = function*(next) {
 	try {
 		//require的话加载成功后node保留，即是手动删除config.json的话还是提示存在
 		// var oldConfig = require('./config.json'); 
-		var oldConfig = yield fs.readFile('../config.json')
+		var oldConfig = yield fs.readFile('../config/config.json')
 		console.log('config.json已存在，读取的数据为：', oldConfig.toString())
 		this.body = 'json exist'
 	} catch (err) {
@@ -61,7 +59,7 @@ var createFile = function*() {
 	var parseJson = JSON.stringify(ctx)
 	console.log('即将写入的数据：', parseJson)
 	try {
-		yield fs.writeFile('../config.json', parseJson)
+		yield fs.writeFile('../config/config.json', parseJson)
 		this.body = 'wirteFile success'
 	} catch (err) {
 		console.log('fs.write ERR:', err)

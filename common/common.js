@@ -1,8 +1,8 @@
 var formidable = require('formidable'),
 	fs = require('fs'),
 	http = require('http'),
-	gbk = require('gbk'),
-	ctx = require('./config.json');
+	gbk = require('gbk');
+// ctx = require('./config.json');
 
 var commonCallback = function(type) {
 	var callback = function(success, fail) {
@@ -111,7 +111,7 @@ var updateConfig = function(ctx, update) {
 	}
 	var newContent = JSON.stringify(ctx);
 	console.log('即将更新config.json,更新的内容为：', newContent)
-	fs.writeFileSync('./config.json', newContent);
+	fs.writeFileSync('../config/config.json', newContent);
 	return '文件更新成功'
 }
 var checkIPv4 = function() {
@@ -124,7 +124,7 @@ var httpGet = function(path, bol) {
 	//bol用于指名是否为gbk,默认bol=false.
 	return new Promise((success, fail) => {
 		http.get(path, function(res) {
-			if (!bol) res.setEncoding('utf8');//操蛋的字符转换
+			if (!bol) res.setEncoding('utf8'); //操蛋的字符转换
 			console.log('请求的地址：', path)
 			var data = '';
 			res.on('data', function(chunk) {

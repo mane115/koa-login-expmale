@@ -1,4 +1,4 @@
-var	map = require('../config/map.json'),
+var	map = require('../common/map.json'),
 	cheerio = require('cheerio'),
 	qqMap = map.qq;
 var getImgSrc = function(newsInfo) {

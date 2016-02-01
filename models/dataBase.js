@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-var ctx = require('./config.json');
+// var ctx = require('./config.json');
 var runBat = function() {
-	var auto = require('./autoBat')
+	var auto = require('../common/autoBat')
 	var batUrl = ctx.dbBatUrl;
 	var cwdUrl = batUrl.substring(0, 3);
 	auto.runBat(batUrl, cwdUrl)
@@ -21,8 +21,8 @@ var initMongoose = function() {
 	})
 }
 var loadModel = function() {
-	require('./models/admin');
-	require('./models/user');
+	require('../models/admin');
+	require('../models/user');
 }
 
 var initDB = function() {

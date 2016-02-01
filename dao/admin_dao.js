@@ -1,7 +1,6 @@
-var dao = require('../dataBase.js'),
+var dao = require('../models/dataBase.js'),
 	Admin = dao.getModel('Admin'),
-	User = dao.getModel('User'),
-	tool = require('../common.js');
+	User = dao.getModel('User');
 var createTest = function() {
 	var entity = new Admin({
 		accountName: 'admin',

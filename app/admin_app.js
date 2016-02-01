@@ -1,5 +1,4 @@
-var dao = require('../dao/admin_dao.js'),
-	tool = require('../common.js');
+var dao = require('../dao/admin_dao.js');
 
 var test = function*(next) {
 	console.log('before dao') //1

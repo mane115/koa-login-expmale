@@ -1,5 +1,4 @@
-var dao = require('../dao/user_dao.js'),
-    tool = require('../common.js');
+var dao = require('../dao/user_dao.js');
 var apply = function*() {
     console.log('user apply')
     var client = tool.resClient(this)

@@ -1,5 +1,5 @@
 // hoop
-var map = require('../config/map.json'),
+var map = require('../common/map.json'),
 	cheerio = require('cheerio'),
 	hoopMap = map.hoop;
 var getContent = function(htmlData) {

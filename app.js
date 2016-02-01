@@ -1,9 +1,9 @@
 var koa = require('koa'),
-	app = koa(),
-	ctx = require('./config.json');
-global.tool = require('./common');
+	app = koa();
+global.ctx = require('./config/config.json');
+global.tool = require('./common/common.js');
 var initDB = function() {
-	require('./dataBase');
+	require('./models/dataBase');
 }
 var initMidWare = function() {
 	var initBodyParser = function() {
@@ -13,7 +13,7 @@ var initMidWare = function() {
 	var initSession = function() {
 		var session = require('koa-session-store'),
 			mongoStore = require('koa-session-mongo'),
-			mongoose = require('./dataBase');
+			mongoose = require('./models/dataBase');
 		app.keys = ctx.keys;
 		var store = mongoStore.create({
 			mongoose: mongoose.connection,
@@ -37,7 +37,8 @@ var initMidWare = function() {
 };
 
 var initRouter = function() {
-	var router = require('./controller.js')
+	var router = require('./router/controller.js')
+		// var router = require('./controller.js')
 	app.use(router.routes())
 		.use(router.allowedMethods());
 }

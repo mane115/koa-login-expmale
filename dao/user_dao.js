@@ -1,6 +1,5 @@
-var dao = require('../dataBase'),
-	User = dao.getModel('User'),
-	tool = require('../common');
+var dao = require('../models/dataBase'),
+	User = dao.getModel('User');
 var generalFind = function(condition, limit, skip) {
 	return new Promise((success, fail) => {
 		User.find(condition).exec(tool.findCallback(success, fail))
