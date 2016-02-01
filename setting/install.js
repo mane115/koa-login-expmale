@@ -67,7 +67,6 @@ var createFile = function*() {
 		console.log('fs.write ERR:', err)
 	}
 }
-
 var initRouter = function() {
 	var router = require('koa-router')();
 	router.post('/create', readConfig, createFile);

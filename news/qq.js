@@ -1,8 +1,6 @@
-var tool = require('../common.js'),
-	map = require('../config/map.json'),
+var	map = require('../config/map.json'),
 	cheerio = require('cheerio'),
 	qqMap = map.qq;
-
 var getImgSrc = function(newsInfo) {
 	var imgs = []
 	newsInfo.forEach(data => {
@@ -63,14 +61,12 @@ var setType = function(type) {
 	}
 }
 
-var getNews = function*(type, client) {
+var getNews = function*(type) {
 	try {
-		console.log('here')
 		var newtype = setType(type)
 		var newList = yield initRequire(newtype)
 		return newList
 	} catch (err) {
-		console.log('err', err)
 		throw err
 	}
 }

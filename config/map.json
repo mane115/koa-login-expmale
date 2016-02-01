@@ -7,5 +7,10 @@
 			"world": "/world_index",
 			"society": "/society_index"
 		}
+	},
+	"hoop": {
+		"regular": "",
+		"hrefPath": "http://voice.hupu.com/nba/newslist",
+		"regular":".list-hd h4 a"
 	}
 }

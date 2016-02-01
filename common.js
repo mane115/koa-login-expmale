@@ -124,6 +124,7 @@ var httpGet = function(path, bol) {
 	//bol用于指名是否为gbk,默认bol=false.
 	return new Promise((success, fail) => {
 		http.get(path, function(res) {
+			if (!bol) res.setEncoding('utf8');//操蛋的字符转换
 			console.log('请求的地址：', path)
 			var data = '';
 			res.on('data', function(chunk) {

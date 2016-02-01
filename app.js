@@ -1,7 +1,7 @@
 var koa = require('koa'),
 	app = koa(),
-	tool = require('./common'),
 	ctx = require('./config.json');
+global.tool = require('./common');
 var initDB = function() {
 	require('./dataBase');
 }
