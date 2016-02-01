@@ -2,7 +2,6 @@ var formidable = require('formidable'),
 	fs = require('fs'),
 	http = require('http'),
 	gbk = require('gbk');
-// ctx = require('./config.json');
 
 var commonCallback = function(type) {
 	var callback = function(success, fail) {

@@ -11,7 +11,7 @@ var getContent = function(htmlData) {
 	})
 	return content
 }
-var getHoopNews = function*(acceptData, $) {
+var getHoopNews = function(acceptData, $) {
 	var newsList = [];
 	acceptData.forEach(data => {
 		var news = {};

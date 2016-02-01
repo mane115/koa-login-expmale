@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-// var ctx = require('./config.json');
 var runBat = function() {
 	var auto = require('../common/autoBat')
 	var batUrl = ctx.dbBatUrl;
