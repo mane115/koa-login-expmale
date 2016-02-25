@@ -25,20 +25,16 @@ var getHoopNews = function(acceptData, $) {
 }
 var initRequire = function*() {
 	var url = hoopMap.hrefPath;
-	var htmlData = yield tool.httpGet(url, false) //utf-8
-	var $ = cheerio.load(htmlData);
-	var acceptData = Array.from($(hoopMap.regular))
-	var news = yield getHoopNews(acceptData, $)
-	return news
-}
-var getNews = function*() {
 	try {
-		var newList = yield initRequire()
-		return newList
+		var htmlData = yield tool.httpGet(url, false) //utf-8
+		var $ = cheerio.load(htmlData);
+		var acceptData = Array.from($(hoopMap.regular))
+		var news = yield getHoopNews(acceptData, $)
+		return news
 	} catch (err) {
 		throw err
 	}
 }
 module.exports = {
-	getNews
+	getNews: initRequire
 }

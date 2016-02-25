@@ -47,7 +47,7 @@ var initSystem = function() {
 	initDB();
 	initMidWare();
 	initRouter();
-	tool.checkIPv4();
+	// tool.checkIPv4();
 	app.listen(ctx.port);
 	console.log(`koa in ${ctx.port}`)
 }

@@ -73,13 +73,29 @@ var upload = function*() {
         client.fail(err)
     }
 };
+var localTest = function*() {
+    var client = tool.resClient(this);
+    try {
+        console.log(`location test`)
+        var local = this.request.body.local;
+        /*local = {
+            x:192,
+            y:168
+        }*/
+        var msg = yield dao.queryLocation(local);
+        yield client.success(msg)
+    } catch (err) {
+        client.fail(err)
+    }
+};
 ///////////////////////////////////////////////////
 module.exports = {
     apply,
     login,
     changePassword,
     unLogin,
-    upload
+    upload,
+    localTest
 };
 ///////////////////////////////////////////////////
 function* checkAccountExist(data, usage) {

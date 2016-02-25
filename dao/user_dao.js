@@ -39,10 +39,25 @@ var changePassword = function(userInfo) {
 	console.log('password changing')
 	return generalUpdate(condition, update, option)
 }
+var queryLocation = function(local) {
+	console.log('this local is ', local)
+	var condition = {
+		x: {
+			$gt: local.x - 10,
+			$lt: local.x + 10
+		},
+		y: {
+			$gt: local.y - 10,
+			$lt: local.y + 10
+		}
+	}
+	return generalFind(condition)
+}
 module.exports = {
 	findAccount,
 	createAccount,
 	changePassword,
 	generalUpdate,
-	generalFind
+	generalFind,
+	queryLocation
 }

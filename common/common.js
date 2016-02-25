@@ -86,6 +86,7 @@ var getIPv4 = function() {
 	var os = require('os'),
 		ip = null,
 		IPMsg = os.networkInterfaces();
+	console.log(`IPMsg.WLAN:${IPMsg.WLAN}`)
 	IPMsg.WLAN.forEach(msg => {
 		if (msg.family === 'IPv4') {
 			ip = msg.address
