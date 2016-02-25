@@ -53,11 +53,16 @@ var queryLocation = function(local) {
 	}
 	return generalFind(condition)
 }
+var insertData = function(data) {
+	console.log('to insert Data', data);
+	return generalCreate(data)
+}
 module.exports = {
 	findAccount,
 	createAccount,
 	changePassword,
 	generalUpdate,
 	generalFind,
-	queryLocation
+	queryLocation,
+	insertData
 }

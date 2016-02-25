@@ -88,6 +88,20 @@ var localTest = function*() {
         client.fail(err)
     }
 };
+var insertData = function*() {
+    var client = tool.resClient(this);
+    try {
+        console.log('user insertData');
+        var data = this.request.body.data;
+        /*data = {
+            a:b
+        }*/
+        var msg = yield dao.insertData(data);
+        yield client.success(msg)
+    } catch (err) {
+        client.fail(err)
+    }
+};
 ///////////////////////////////////////////////////
 module.exports = {
     apply,
@@ -95,7 +109,8 @@ module.exports = {
     changePassword,
     unLogin,
     upload,
-    localTest
+    localTest,
+    insertData
 };
 ///////////////////////////////////////////////////
 function* checkAccountExist(data, usage) {
