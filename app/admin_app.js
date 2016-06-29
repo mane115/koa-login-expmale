@@ -1,13 +1,10 @@
 var dao = require('../dao/admin_dao.js');
 
 var test = function*(next) {
-	console.log('before dao') //1
-	var val = yield dao.createTest() //2 return val
-	console.log('after dao') //3
-	yield * test2(val, this)
-	console.log('after test2'); //6
-	// yield next
-	// console.log('after next')
+	var client = tool.resClient(this)
+	var url = 'http://03kh.com';
+	var data = yield tool.httpGet(url,true);
+	yield client.success(data)
 }
 var test2 = function*(val, req) {
 	yield dao.test(val) //7 need val
