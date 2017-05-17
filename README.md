@@ -1,6 +1,6 @@
 # koa-login
-## this is a out of date demo (build at 2015.12). Here is a new project: ##### [Ucenter](https://github.com/mane115/ucenter)
-## 这是一个过时的demo，在我刚接触koa不久的时候写的，现在基于koa2写了个开源的用户中心项目，有一套齐全的api： ##### [Ucenter](https://github.com/mane115/ucenter)
+## this is a out of date demo (build at 2015.12). Here is a new project: [Ucenter](https://github.com/mane115/ucenter)
+## 这是一个过时的demo，在我刚接触koa不久的时候写的，现在基于koa2写了个开源的用户中心项目，有一套齐全的api： [Ucenter](https://github.com/mane115/ucenter)
 ===
 this is a sinple example by use koa,and the midware is koa-router,koa-session-mongo,koa-bodyparser  
 这是一个简单的simple，使用了koa-router,koa-session-mongo,koa-bodyparser等中间件实现登录功能  
